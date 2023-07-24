@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs
+  labels:
+    app: nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: devopshint
+          image: 908198849120.dkr.ecr.ap-south-1.amazonaws.com/devopshint:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
